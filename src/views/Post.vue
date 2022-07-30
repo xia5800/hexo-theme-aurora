@@ -189,7 +189,7 @@
             <Article :data="post.next_post" />
           </div>
         </div>
-        <template v-if="post.title && post.text && post.uid">
+        <template v-if="post.title && post.text && post.uid && recentCommentEnable">
           <div id="comments">
             <Comment :title="post.title" :body="post.text" :uid="post.uid" />
           </div>
@@ -294,7 +294,16 @@ export default defineComponent({
       handleAuthorClick,
       loading,
       post,
-      t
+      t,
+      recentCommentEnable: computed(() => {
+        return (
+          (appStore.themeConfig.plugins.gitalk.enable &&
+            appStore.themeConfig.plugins.gitalk.recentComment) ||
+          (!appStore.themeConfig.plugins.gitalk.enable &&
+            appStore.themeConfig.plugins.valine.enable &&
+            appStore.themeConfig.plugins.valine.recentComment)
+        )
+      })
     }
   }
 })
