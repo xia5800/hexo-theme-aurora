@@ -13,17 +13,17 @@
       "
       @click="handleLogoClick"
     >
-      <span class="flex text-4xl" v-if="themeConfig.site.author">
-        {{ themeConfig.site.author }}
+      <!-- 虽然我知道这里之前使用author是因为博客支持多作者。但是这里我不需要多作者 -->
+      <span class="flex text-4xl">
+        {{ themeConfig.site.subtitle || 'Aurora' }}
       </span>
-      <span v-else class="flex text-4xl animation-text">LOADING</span>
       <span class="font-extrabold text-xs uppercase">
         {{ themeConfig.site.nick || 'BLOG' }}
       </span>
     </div>
     <img
       class="logo-image"
-      :src="themeConfig.site.logo || themeConfig.site.avatar"
+      :src="themeConfig.site.logo"
       alt="site-logo"
     />
   </div>
