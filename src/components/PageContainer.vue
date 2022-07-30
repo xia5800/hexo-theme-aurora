@@ -60,7 +60,7 @@
       </div>
       <div class="col-span-1">
         <Sidebar>
-          <Profile author="blog-author" />
+          <Profile :author="post.author.slug" v-if="post.author" />
           <Toc :toc="post.toc" />
         </Sidebar>
       </div>
